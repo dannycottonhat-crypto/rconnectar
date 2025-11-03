@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rconnectar · Permacultura, comunidad y propósito</title>
+  <meta name="description" content="ONG Asociación R Con Néctar (Nº 631274). Cursos de permacultura con pago seguro Stripe. Acompañamiento 1:1 (Rcordar), proyectos y charlas." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://js.stripe.com/v3/"></script>
+  <style>html{scroll-behavior:smooth} .container{max-width:1180px}</style>
+</head>
+<body class="bg-emerald-50 text-slate-800">
+  <div class="w-full bg-emerald-900 text-emerald-50 text-sm">
+    <div class="container mx-auto px-4 py-2 text-center">
+      <span class="font-semibold">Asociación R Con Néctar</span> · ONG inscrita — <span class="font-semibold">Nº 631274</span>
+    </div>
+  </div>
+
+  <header class="sticky top-0 z-30 bg-white/90 backdrop-blur border-b">
+    <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <img src="img/logo.webp" alt="Logo R Con Néctar" class="w-9 h-9 rounded-full object-cover" />
+        <div class="leading-tight">
+          <div class="font-semibold tracking-wide">RCONNECTAR</div>
+          <div class="text-xs text-slate-500">permacultura & propósito</div>
+        </div>
+      </div>
+      <nav class="hidden md:flex items-center gap-1">
+        <a href="#inicio" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Inicio</a>
+        <a href="#cursos" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Cursos</a>
+        <a href="#rcordar" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Rcordar</a>
+        <a href="#proyectos" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Proyectos</a>
+        <a href="#contacto" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Contacto</a>
+      </nav>
+      <button class="md:hidden p-2 rounded-2xl border" onclick="document.getElementById('m').classList.toggle('hidden')">☰</button>
+    </div>
+    <div id="m" class="md:hidden container mx-auto px-4 pb-3 hidden">
+      <div class="flex flex-col gap-2">
+        <a href="#inicio" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Inicio</a>
+        <a href="#cursos" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Cursos</a>
+        <a href="#rcordar" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Rcordar</a>
+        <a href="#proyectos" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Proyectos</a>
+        <a href="#contacto" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Contacto</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="inicio" class="relative">
+    <div class="container mx-auto px-4 py-12 grid md:grid-cols-2 gap-8 items-center">
+      <div>
+        <h1 class="text-4xl md:text-5xl font-semibold leading-tight">RCONNECTAR
+          <span class="block text-emerald-700">permacultura, comunidad y propósito</span>
+        </h1>
+        <p class="mt-4 text-slate-600 text-lg">Inspiramos y acompañamos procesos que reconectan a las personas con la tierra y con su sentido. Aprendizaje vivo que transforma.</p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="#cursos" class="px-5 py-3 rounded-2xl bg-emerald-700 text-white">Ver cursos</a>
+          <a href="#rcordar" class="px-5 py-3 rounded-2xl border">Conoce Rcordar</a>
+        </div>
+        <div class="mt-6 flex gap-2 text-xs">
+          <span class="px-2 py-1 rounded-full bg-emerald-100">agroecología</span>
+          <span class="px-2 py-1 rounded-full bg-emerald-100">permacultura</span>
+          <span class="px-2 py-1 rounded-full bg-emerald-100">diseño regenerativo</span>
+        </div>
+      </div>
+      <div>
+        <img src="img/hero.webp" alt="Mano con semillas en huerta" class="w-full rounded-3xl shadow"/>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-6">
+    <div class="container mx-auto px-4 grid md:grid-cols-3 gap-4">
+      <div class="p-5 rounded-3xl bg-white border"><div class="font-semibold mb-1">Práctica viva</div><p class="text-sm text-slate-600">Aprender haciendo, en comunidad.</p></div>
+      <div class="p-5 rounded-3xl bg-white border"><div class="font-semibold mb-1">Regeneración</div><p class="text-sm text-slate-600">Suelo sano, agua cuidada, biodiversidad.</p></div>
+      <div class="p-5 rounded-3xl bg-white border"><div class="font-semibold mb-1">Propósito</div><p class="text-sm text-slate-600">Herramientas para alinear vida y proyectos.</p></div>
+    </div>
+  </section>
+
+  <section id="cursos" class="py-12 bg-white border-t">
+    <div class="container mx-auto px-4">
+      <div class="flex items-end justify-between gap-4">
+        <div>
+          <h2 class="text-3xl font-semibold">Cursos y talleres</h2>
+          <p class="text-slate-600">Pago seguro con Stripe. Certificado de participación.</p>
+        </div>
+        <input id="q" class="hidden md:block border rounded-2xl px-3 py-2" placeholder="Buscar cursos…" oninput="filter()"/>
+      </div>
+
+      <div id="grid" class="grid md:grid-cols-3 gap-6 mt-8"></div>
+
+      <div class="mt-10 p-6 bg-emerald-50 rounded-3xl border text-sm text-slate-700">
+        <b>¿Cómo funciona el pago?</b> Cada curso tiene un botón de <i>Comprar ahora</i> que te lleva al Checkout seguro de Stripe. Si prefieres pagar varias plazas a la vez, escríbenos y te enviamos un enlace personalizado.
+      </div>
+    </div>
+  </section>
+
+  <section id="rcordar" class="py-12">
+    <div class="container mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
+      <div>
+        <h2 class="text-3xl font-semibold">Rcordar</h2>
+        <p class="text-slate-600 mt-2">Espacio divulgativo y de acompañamiento uno a uno. Facilitación de procesos: escucha, preguntas y prácticas que te ayudan a recordar tu propósito.</p>
+        <div class="mt-4 flex gap-3">
+          <a href="#contacto" class="px-5 py-3 rounded-2xl bg-emerald-700 text-white">Reservar sesión</a>
+          <a href="#contacto" class="px-5 py-3 rounded-2xl border">Escribir para info</a>
+        </div>
+      </div>
+      <div><img src="img/rcordar.webp" alt="Pareja con fruto en la huerta" class="w-full rounded-3xl shadow"/></div>
+    </div>
+  </section>
+
+  <section id="proyectos" class="py-12 bg-white border-t">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-semibold">Proyectos en marcha</h2>
+      <p class="text-slate-600 mt-2">Huertas comunitarias, escuela de temporada y diseño social.</p>
+      <div class="grid md:grid-cols-3 gap-6 mt-8">
+        <div class="rounded-3xl overflow-hidden bg-white border">
+          <img src="img/proj1.webp" alt="Encuentro comunitario en la huerta" class="h-44 w-full object-cover"/>
+          <div class="p-5">
+            <div class="font-semibold">Huerta comunitaria</div>
+            <p class="text-sm text-slate-600">Diseño y mantenimiento participativo.</p>
+          </div>
+        </div>
+        <div class="rounded-3xl overflow-hidden bg-white border">
+          <img src="img/proj2.webp" alt="Caja con cosecha de temporada" class="h-44 w-full object-cover"/>
+          <div class="p-5">
+            <div class="font-semibold">Escuela de temporada</div>
+            <p class="text-sm text-slate-600">Ciclos prácticos sobre suelo, agua y biodiversidad.</p>
+          </div>
+        </div>
+        <div class="rounded-3xl overflow-hidden bg-white border">
+          <img src="img/proj3.webp" alt="Semillas y frutos de variedades locales" class="h-44 w-full object-cover"/>
+          <div class="p-5">
+            <div class="font-semibold">Diseño social</div>
+            <p class="text-sm text-slate-600">Acompañamiento a colectivos.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" class="py-12">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-semibold">Contacto</h2>
+      <p class="text-slate-600 mt-2">Escríbenos para cursos, sesiones 1:1 o propuestas de charlas.</p>
+      <div class="grid md:grid-cols-3 gap-6 mt-8">
+        <div class="p-6 rounded-3xl bg-white border">
+          <div class="font-semibold">Correo</div>
+          <a class="text-emerald-700" href="mailto:hola@rconnectar.org">hola@rconnectar.org</a>
+        </div>
+        <div class="p-6 rounded-3xl bg-white border">
+          <div class="font-semibold">Instagram</div>
+          <a class="text-emerald-700" href="https://www.instagram.com/rconnectar/" target="_blank" rel="noreferrer">@rconnectar</a>
+        </div>
+        <div class="p-6 rounded-3xl bg-white border">
+          <div class="font-semibold">Ubicación</div>
+          <div>Madrid, España</div>
+        </div>
+      </div>
+      <div class="mt-8 p-6 rounded-3xl bg-emerald-50 border text-sm text-slate-700">
+        <b>ONG</b> · Asociación R Con Néctar · Registro Nacional Nº 631274.
+      </div>
+    </div>
+  </section>
+
+  <footer class="border-t">
+    <div class="container mx-auto px-4 py-10 grid md:grid-cols-4 gap-8">
+      <div>
+        <div class="flex items-center gap-2 font-semibold mb-2"><img src="img/logo.webp" class="w-6 h-6 rounded-full" alt="Logo"/> RCONNECTAR</div>
+        <p class="text-sm text-slate-600">Tierra, comunidad y propósito. Formación, proyectos y acompañamiento.</p>
+      </div>
+      <div>
+        <div class="font-semibold mb-2">Mapa</div>
+        <ul class="space-y-1 text-sm text-slate-600">
+          <li><a href="#inicio" class="hover:text-emerald-700">Inicio</a></li>
+          <li><a href="#cursos" class="hover:text-emerald-700">Cursos</a></li>
+          <li><a href="#rcordar" class="hover:text-emerald-700">Rcordar</a></li>
+          <li><a href="#proyectos" class="hover:text-emerald-700">Proyectos</a></li>
+          <li><a href="#contacto" class="hover:text-emerald-700">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="font-semibold mb-2">Boletín</div>
+        <form onsubmit="event.preventDefault(); alert('¡Gracias por suscribirte!');" class="flex gap-2">
+          <input type="email" required placeholder="tu@email.com" class="rounded-2xl border px-3 py-2 w-full"/>
+          <button class="px-4 py-2 rounded-2xl bg-emerald-700 text-white">Suscribir</button>
+        </form>
+      </div>
+      <div>
+        <div class="font-semibold mb-2">Biodiversidad</div>
+        <img src="img/biodiv.webp" alt="Abeja polinizando una flor rosa" class="rounded-2xl border"/>
+      </div>
+    </div>
+    <div class="text-center text-xs text-slate-500 pb-8">© <span id="y"></span> RCONNECTAR · Todos los derechos reservados</div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    const COURSES = [{
+      id:'curso-perma-basico', title:'Permacultura Básica: Diseño de Huerta Regenerativa',
+      price:59, level:'Inicial', mode:'Online en directo', dates:['22 nov 2025','14 dic 2025'],
+      bullets:['Principios de permacultura','Suelos vivos y compost','Asociaciones y calendarios de siembra'],
+      stripeUrl:'https://buy.stripe.com/test_XXXX', cover:'img/course1.webp'
+    },{
+      id:'curso-biofert', title:'Biofermentos & Compost: del Residuo al Recurso',
+      price:39, level:'Intermedio', mode:'Presencial (Valdemorillo, Madrid)', dates:['30 nov 2025'],
+      bullets:['Microorganismos eficientes','Bocashi y lixiviados','Técnicas seguras y escalables'],
+      stripeUrl:'https://buy.stripe.com/test_YYYY', cover:'img/course2.webp'
+    },{
+      id:'curso-disenosocial', title:'Diseño Social & Propósito: proyectos con raíz',
+      price:74, level:'Todos los niveles', mode:'Híbrido', dates:['7 dic 2025'],
+      bullets:['Marco de diseño regenerativo','Gobernanza y colaboración','Comunicación con propósito'],
+      stripeUrl:'https://buy.stripe.com/test_ZZZZ', cover:'img/course3.webp'
+    }];
+
+    const grid = document.getElementById('grid');
+    const currency = n => new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR'}).format(n);
+
+    function card(c){
+      const el = document.createElement('article');
+      el.className = 'rounded-3xl overflow-hidden bg-white border flex flex-col';
+      el.innerHTML = '        <img src="'+c.cover+'" alt="'+c.title+'" class="h-44 w-full object-cover"/>        <div class="p-5 flex-1 flex flex-col gap-2">          <div class="text-xl font-semibold leading-snug">'+c.title+'</div>          <div class="text-sm text-slate-600">'+c.level+' · '+c.mode+'</div>          <ul class="text-sm text-slate-700 list-disc pl-5">'+c.bullets.map(b=>'<li>'+b+'</li>').join('')+'</ul>          <div class="mt-auto flex items-center justify-between pt-2">            <div class="text-sm text-slate-600">'+c.dates.join(' · ')+'</div>            <div class="text-lg font-semibold">'+currency(c.price)+'</div>          </div>        </div>        <div class="p-5 pt-0 flex items-center justify-between gap-3">          <a href="#cursos" class="px-4 py-2 rounded-2xl border" onclick="add(\''+c.id+'\')">Añadir</a>          <a href="'+c.stripeUrl+'" target="_blank" rel="noreferrer" class="px-4 py-2 rounded-2xl bg-emerald-700 text-white">Comprar ahora</a>        </div>';
+      return el;
+    }
+
+    function render(list){ grid.innerHTML=''; list.forEach(c=>grid.appendChild(card(c))); }
+    function filter(){
+      const t=(document.getElementById('q').value||'').toLowerCase();
+      render(!t?COURSES:COURSES.filter(c=> (c.title+' '+c.level+' '+c.mode).toLowerCase().includes(t)));
+    }
+    render(COURSES);
+
+    const cart = {};
+    const cartBtn = document.createElement('button');
+    cartBtn.className = 'fixed bottom-6 right-6 bg-emerald-700 text-white rounded-full shadow-xl px-5 py-3';
+    cartBtn.textContent = 'Carrito (0)';
+    cartBtn.onclick = openCart;
+    document.body.appendChild(cartBtn);
+    function add(id){ cart[id]=(cart[id]||0)+1; updateCartBtn(); }
+    function rm(id){ if(!cart[id])return; cart[id]--; if(cart[id]<=0) delete cart[id]; updateCartBtn(); drawCart(); }
+    function updateCartBtn(){ const n=Object.values(cart).reduce((a,b)=>a+b,0); cartBtn.textContent='Carrito ('+n+')'; }
+    function openCart(){
+      const w=document.createElement('div'); w.id='cart';
+      w.className='fixed inset-0 bg-black/50 flex items-end md:items-center justify-center p-4';
+      w.innerHTML='<div class="bg-white rounded-3xl w-full max-w-md p-6">        <div class="flex items-center justify-between mb-2"><div class="font-semibold text-lg">Tu carrito</div><button class="text-slate-500" onclick="document.getElementById(\'cart\').remove()">✕</button></div>        <div id="cartItems" class="space-y-3 text-sm"></div>        <div class="flex items-center justify-between pt-3 border-t mt-3"><div>Total</div><div id="cartTotal" class="font-semibold"></div></div>        <div class="mt-4 grid grid-cols-2 gap-2"><button class="px-4 py-2 rounded-2xl border" onclick="document.getElementById(\'cart\').remove()">Seguir explorando</button><button id="pay" class="px-4 py-2 rounded-2xl bg-emerald-700 text-white">Ir a pagar</button></div>        <p class="text-xs text-slate-500 mt-3">Si quieres pagar varias plazas juntas, escríbenos y te enviamos un enlace de Stripe consolidado.</p>      </div>';
+      document.body.appendChild(w); drawCart(); document.getElementById('pay').onclick=checkout;
+    }
+    function drawCart(){ const box=document.getElementById('cartItems'); if(!box)return; box.innerHTML=''; let total=0; Object.entries(cart).forEach(([id,qty])=>{const c=COURSES.find(x=>x.id===id); if(!c)return; total+=c.price*qty; const row=document.createElement('div'); row.className='flex items-center justify-between'; row.innerHTML='<span>'+c.title+' × '+qty+'</span><div class="flex items-center gap-2"><button class="px-2 py-1 rounded-2xl border" onclick="rm(\''+id+'\')">-</button><button class="px-2 py-1 rounded-2xl border" onclick="add(\''+id+'\')">+</button></div>'; box.appendChild(row);}); document.getElementById('cartTotal').textContent=currency(total); }
+    function checkout(){ const ids=Object.keys(cart); if(ids.length===1){ const c=COURSES.find(x=>x.id===ids[0]); window.open(c.stripeUrl,'_blank'); return;} alert('Para pagar varios cursos juntos, escríbenos.'); }
+  </script>
+</body>
+</html>
