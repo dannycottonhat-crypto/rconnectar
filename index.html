@@ -430,12 +430,12 @@
 
     const COURSES = [{
       id:'curso-perma-basico', title:'Permacultura Básica: Diseño de Huerta Regenerativa',
-      price:59, level:'Inicial', mode:'Online en directo', dates:['22 nov 2025','14 dic 2025'],
+      price:null, level:'Inicial', mode:'Online en directo', dates:['22 nov 2025','14 dic 2025'],
       bullets:['Principios de permacultura','Suelos vivos y compost','Asociaciones y calendarios de siembra'],
       stripeUrl:'https://buy.stripe.com/test_XXXX', cover:'img/course1.webp'
     },{
       id:'curso-biofert', title:'Biofermentos & Compost: del Residuo al Recurso',
-      price:39, level:'Intermedio', mode:'Presencial (Valdemorillo, Madrid)', dates:['30 nov 2025'],
+      price:null, level:'Intermedio', mode:'Presencial (Valdemorillo, Madrid)', dates:['30 nov 2025'],
       bullets:['Microorganismos eficientes','Bocashi y lixiviados','Técnicas seguras y escalables'],
       stripeUrl:'https://buy.stripe.com/test_YYYY', cover:'img/course2.webp'
     },{
@@ -451,7 +451,9 @@
     function card(c){
       const el = document.createElement('article');
       el.className = 'rounded-3xl overflow-hidden bg-white border flex flex-col';
-      el.innerHTML = '        <img src="'+c.cover+'" alt="'+c.title+'" class="h-44 w-full object-cover"/>        <div class="p-5 flex-1 flex flex-col gap-2">          <div class="text-xl font-semibold leading-snug">'+c.title+'</div>          <div class="text-sm text-slate-600">'+c.level+' · '+c.mode+'</div>          <ul class="text-sm text-slate-700 list-disc pl-5">'+c.bullets.map(b=>'<li>'+b+'</li>').join('')+'</ul>          <div class="mt-auto flex items-center justify-between pt-2">            <div class="text-sm text-slate-600">'+c.dates.join(' · ')+'</div>            <div class="text-lg font-semibold">'+currency(c.price)+'</div>          </div>        </div>        <div class="p-5 pt-0 flex items-center justify-between gap-3">          <a href="#cursos" class="px-4 py-2 rounded-2xl border" onclick="add(\''+c.id+'\')">Añadir</a>          <a href="'+c.stripeUrl+'" target="_blank" rel="noreferrer" class="px-4 py-2 rounded-2xl bg-emerald-700 text-white">Comprar ahora</a>        </div>';
+      el.innerHTML = '        <img src="'+c.cover+'" alt="'+c.title+'" class="h-44 w-full object-cover"/>        <div class="p-5 flex-1 flex flex-col gap-2">          <div class="text-xl font-semibold leading-snug">'+c.title+'</div>          <div class="text-sm text-slate-600">'+c.level+' · '+c.mode+'</div>          <ul class="text-sm text-slate-700 list-disc pl-5">'+c.bullets.map(b=>'<li>'+b+'</li>').join('')+'</ul>          <div class="mt-auto flex items-center justify-between pt-2">            <div class="text-sm text-slate-600">'+c.dates.join(' · ')+'</div>            <div class="text-lg font-semibold">
+  '+(c.price ? currency(c.price) : 'Consultar')+'
+</div>        </div>        </div>        <div class="p-5 pt-0 flex items-center justify-between gap-3">          <a href="#cursos" class="px-4 py-2 rounded-2xl border" onclick="add(\''+c.id+'\')">Añadir</a>          <a href="'+c.stripeUrl+'" target="_blank" rel="noreferrer" class="px-4 py-2 rounded-2xl bg-emerald-700 text-white">Comprar ahora</a>        </div>';
       return el;
     }
 
