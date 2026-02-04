@@ -10,6 +10,8 @@
   <script src="https://js.stripe.com/v3/"></script>
   <style>html{scroll-behavior:smooth} .container{max-width:1180px}</style>
 </head>
+  
+<body class="bg-emerald-50 text-slate-800">
   <header class="sticky top-0 z-30 bg-white/90 backdrop-blur border-b">
    <div class="container mx-auto px-4 py-3 grid grid-cols-[auto,1fr,auto] items-center">
   
@@ -42,31 +44,7 @@
   </div>
 
 </div>
-     <a href="#inicio" class="flex items-center gap-3">
-  <img src="img/logo.webp" alt="Logo R Con Néctar" class="w-9 h-9 rounded-full object-cover" />
-  <div class="leading-tight">
-    <div class="font-semibold tracking-wide">RCONNECTAR</div>
-    <div class="text-xs text-slate-500">permacultura & propósito</div>
-  </div>
-</a>
-          <div class="font-semibold tracking-wide">RCONNECTAR</div>
-          <div class="text-xs text-slate-500">permacultura & propósito</div>
-        </div>
-      </div>
-    <nav class="hidden md:flex items-center gap-1">
-  <a href="#inicio" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Inicio</a>
-  <a href="#escuela" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Escuela</a>
-  <a href="#servicios" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Servicios</a>
-  <a href="#encuentros" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Encuentros</a>
-  <a href="#rcordar" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">R cordar</a>
-  <a href="#tienda" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Creaciones</a>
-  <a href="#recomendaciones" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Recomendaciones</a>
-  <a href="#blog" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Blog</a>
-  <a href="#donaciones" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Donaciones</a>
-  <a href="#contacto" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Contacto</a>
-</nav>
-      <button class="md:hidden p-2 rounded-2xl border" onclick="document.getElementById('m').classList.toggle('hidden')">☰</button>
-    </div>
+   
     <div id="m" class="md:hidden container mx-auto px-4 pb-3 hidden">
       <div class="flex flex-col gap-2">
       <a href="#inicio" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Inicio</a>
@@ -82,7 +60,6 @@
       </div>
     </div>
   </header>
-<body class="bg-emerald-50 text-slate-800">
   <section id="inicio" class="py-24 bg-emerald-900 text-emerald-50">
   <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
     
@@ -474,7 +451,7 @@
       stripeUrl:'https://buy.stripe.com/test_YYYY', cover:'img/course2.webp'
     },{
       id:'curso-disenosocial', title:'Diseño Social & Propósito: proyectos con raíz',
-      price:74, level:'Todos los niveles', mode:'Híbrido', dates:['7 dic 2025'],
+      price:null, level:'Todos los niveles', mode:'Híbrido', dates:['7 dic 2025'],
       bullets:['Marco de diseño regenerativo','Gobernanza y colaboración','Comunicación con propósito'],
       stripeUrl:'https://buy.stripe.com/test_ZZZZ', cover:'img/course3.webp'
     }];
@@ -513,7 +490,7 @@
       w.innerHTML='<div class="bg-white rounded-3xl w-full max-w-md p-6">        <div class="flex items-center justify-between mb-2"><div class="font-semibold text-lg">Tu carrito</div><button class="text-slate-500" onclick="document.getElementById(\'cart\').remove()">✕</button></div>        <div id="cartItems" class="space-y-3 text-sm"></div>        <div class="flex items-center justify-between pt-3 border-t mt-3"><div>Total</div><div id="cartTotal" class="font-semibold"></div></div>        <div class="mt-4 grid grid-cols-2 gap-2"><button class="px-4 py-2 rounded-2xl border" onclick="document.getElementById(\'cart\').remove()">Seguir explorando</button><button id="pay" class="px-4 py-2 rounded-2xl bg-emerald-700 text-white">Ir a pagar</button></div>        <p class="text-xs text-slate-500 mt-3">Si quieres pagar varias plazas juntas, escríbenos y te enviamos un enlace de Stripe consolidado.</p>      </div>';
       document.body.appendChild(w); drawCart(); document.getElementById('pay').onclick=checkout;
     }
-    function drawCart(){ const box=document.getElementById('cartItems'); if(!box)return; box.innerHTML=''; let total=0; Object.entries(cart).forEach(([id,qty])=>{const c=COURSES.find(x=>x.id===id); if(!c)return; total+=c.price*qty; const row=document.createElement('div'); row.className='flex items-center justify-between'; row.innerHTML='<span>'+c.title+' × '+qty+'</span><div class="flex items-center gap-2"><button class="px-2 py-1 rounded-2xl border" onclick="rm(\''+id+'\')">-</button><button class="px-2 py-1 rounded-2xl border" onclick="add(\''+id+'\')">+</button></div>'; box.appendChild(row);}); document.getElementById('cartTotal').textContent=currency(total); }
+    function drawCart(){ const box=document.getElementById('cartItems'); if(!box)return; box.innerHTML=''; let total=0; Object.entries(cart).forEach(([id,qty])=>{const c=COURSES.find(x=>x.id===id); if(!c)return; total += (c.price || 0) * qty; const row=document.createElement('div'); row.className='flex items-center justify-between'; row.innerHTML='<span>'+c.title+' × '+qty+'</span><div class="flex items-center gap-2"><button class="px-2 py-1 rounded-2xl border" onclick="rm(\''+id+'\')">-</button><button class="px-2 py-1 rounded-2xl border" onclick="add(\''+id+'\')">+</button></div>'; box.appendChild(row);}); document.getElementById('cartTotal').textContent=currency(total); }
     function checkout(){ const ids=Object.keys(cart); if(ids.length===1){ const c=COURSES.find(x=>x.id===ids[0]); window.open(c.stripeUrl,'_blank'); return;} alert('Para pagar varios cursos juntos, escríbenos.'); }
   </script>
 </body>
