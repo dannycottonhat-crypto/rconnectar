@@ -9,6 +9,42 @@
   <script src="https://js.stripe.com/v3/"></script>
   <style>html{scroll-behavior:smooth} .container{max-width:1180px}</style>
 </head>
+  <header class="sticky top-0 z-30 bg-white/90 backdrop-blur border-b">
+    <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <img src="img/logo.webp" alt="Logo R Con Néctar" class="w-9 h-9 rounded-full object-cover" />
+        <div class="leading-tight">
+          <div class="font-semibold tracking-wide">RCONNECTAR</div>
+          <div class="text-xs text-slate-500">permacultura & propósito</div>
+        </div>
+      </div>
+    <nav class="hidden md:flex items-center gap-1">
+  <a href="#inicio" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Inicio</a>
+  <a href="#escuela" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Escuela</a>
+  <a href="#servicios" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Servicios</a>
+  <a href="#encuentros" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Encuentros</a>
+  <a href="#rcordar" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">R cordar</a>
+  <a href="#tienda" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Creaciones</a>
+  <a href="#blog" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Blog</a>
+  <a href="#donaciones" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Donaciones</a>
+  <a href="#contacto" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Contacto</a>
+</nav>
+      <button class="md:hidden p-2 rounded-2xl border" onclick="document.getElementById('m').classList.toggle('hidden')">☰</button>
+    </div>
+    <div id="m" class="md:hidden container mx-auto px-4 pb-3 hidden">
+      <div class="flex flex-col gap-2">
+      <a href="#inicio" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Inicio</a>
+<a href="#escuela" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Escuela</a>
+<a href="#servicios" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Servicios</a>
+<a href="#encuentros" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Encuentros</a>
+<a href="#rcordar" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">R cordar</a>
+<a href="#tienda" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Creaciones</a>
+<a href="#blog" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Blog</a>
+<a href="#donaciones" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Donaciones</a>
+<a href="#contacto" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Contacto</a>
+      </div>
+    </div>
+  </header>
 <body class="bg-emerald-50 text-slate-800">
   <section id="inicio" class="py-24 bg-emerald-900 text-emerald-50">
   <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
@@ -48,42 +84,7 @@
     </div>
   </div>
 
-  <header class="sticky top-0 z-30 bg-white/90 backdrop-blur border-b">
-    <div class="container mx-auto px-4 py-3 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <img src="img/logo.webp" alt="Logo R Con Néctar" class="w-9 h-9 rounded-full object-cover" />
-        <div class="leading-tight">
-          <div class="font-semibold tracking-wide">RCONNECTAR</div>
-          <div class="text-xs text-slate-500">permacultura & propósito</div>
-        </div>
-      </div>
-    <nav class="hidden md:flex items-center gap-1">
-  <a href="#inicio" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Inicio</a>
-  <a href="#escuela" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Escuela</a>
-  <a href="#servicios" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Servicios</a>
-  <a href="#encuentros" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Encuentros</a>
-  <a href="#rcordar" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">R cordar</a>
-  <a href="#tienda" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Creaciones</a>
-  <a href="#blog" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Blog</a>
-  <a href="#donaciones" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Donaciones</a>
-  <a href="#contacto" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Contacto</a>
-</nav>
-      <button class="md:hidden p-2 rounded-2xl border" onclick="document.getElementById('m').classList.toggle('hidden')">☰</button>
-    </div>
-    <div id="m" class="md:hidden container mx-auto px-4 pb-3 hidden">
-      <div class="flex flex-col gap-2">
-      <a href="#inicio" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Inicio</a>
-<a href="#escuela" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Escuela</a>
-<a href="#servicios" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Servicios</a>
-<a href="#encuentros" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Encuentros</a>
-<a href="#rcordar" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">R cordar</a>
-<a href="#tienda" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Creaciones</a>
-<a href="#blog" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Blog</a>
-<a href="#donaciones" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Donaciones</a>
-<a href="#contacto" class="px-3 py-2 rounded-2xl hover:bg-emerald-100">Contacto</a>
-      </div>
-    </div>
-  </header>
+  
 
 <section id="escuela" class="py-16 bg-white border-t">
   <div class="container mx-auto px-4">
